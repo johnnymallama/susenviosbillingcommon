@@ -132,6 +132,14 @@ public class Acumulado {
     @Column(name = "Telefono")
     private String telefono;
 
+    @Column(name = "FechaDocumento")
+    @Temporal(TemporalType.DATE)
+    private Calendar fechaDocumento;
+
+    @Column(name = "FechaEntrega")
+    @Temporal(TemporalType.DATE)
+    private Calendar fechaEntrega;
+
     public String getNumeroGuia() {
         return numeroGuia;
     }
@@ -451,4 +459,22 @@ public class Acumulado {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public Calendar getFechaDocumento() {
+        return fechaDocumento;
+    }
+
+    public void setFechaDocumento(Calendar fechaDocumento) {
+        this.fechaDocumento = fechaDocumento;
+    }
+
+    public Calendar getFechaEntrega() {
+        return fechaEntrega;
+    }
+
+    public void setFechaEntrega(Calendar fechaEntrega) {
+        this.fechaEntrega = fechaEntrega;
+    }
+
+
 }

@@ -12,7 +12,7 @@ public class T040009 {
     private IdT040009 idT040009;
 
     @Column(name = "Cod_Regional_FExterna")
-    private int codRegionalFExterna;
+    private Integer codRegionalFExterna;
 
     @Column(name = "Cons_FExterna")
     private BigInteger consFExterna;
@@ -27,7 +27,7 @@ public class T040009 {
     public T040009() {
     }
 
-    public T040009(IdT040009 idT040009, int codRegionalFExterna, BigInteger consFExterna, Calendar fecFExterna, String prefFactura) {
+    public T040009(IdT040009 idT040009, Integer codRegionalFExterna, BigInteger consFExterna, Calendar fecFExterna, String prefFactura) {
         this.idT040009 = idT040009;
         this.codRegionalFExterna = codRegionalFExterna;
         this.consFExterna = consFExterna;
@@ -43,11 +43,11 @@ public class T040009 {
         this.idT040009 = idT040009;
     }
 
-    public int getCodRegionalFExterna() {
+    public Integer getCodRegionalFExterna() {
         return codRegionalFExterna;
     }
 
-    public void setCodRegionalFExterna(int codRegionalFExterna) {
+    public void setCodRegionalFExterna(Integer codRegionalFExterna) {
         this.codRegionalFExterna = codRegionalFExterna;
     }
 

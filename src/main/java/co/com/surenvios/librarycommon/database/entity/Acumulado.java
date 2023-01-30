@@ -140,6 +140,9 @@ public class Acumulado {
     @Temporal(TemporalType.DATE)
     private Calendar fechaEntrega;
 
+    @Column(name = "Origen")
+    private String origen;
+
     public String getNumeroGuia() {
         return numeroGuia;
     }
@@ -476,5 +479,11 @@ public class Acumulado {
         this.fechaEntrega = fechaEntrega;
     }
 
+    public String getOrigen() {
+        return origen;
+    }
 
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
 }

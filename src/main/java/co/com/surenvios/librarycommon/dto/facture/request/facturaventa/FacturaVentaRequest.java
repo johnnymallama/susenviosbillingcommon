@@ -8,92 +8,102 @@ import co.com.surenvios.librarycommon.dto.facture.request.common.*;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class FacturaVentaRequest {
 
-	@XmlElement(name = "Cabecera")
-	private Cabecera cabecera;
+    @XmlElement(name = "Cabecera")
+    private Cabecera cabecera;
 
-	@XmlElement(name = "NumeracionDIAN")
-	private Numeracion numeracionDian;
+    @XmlElement(name = "MediosDePago")
+    private MedioPago medioDePago;
 
-	@XmlElement(name = "Notificacion")
-	private Notificacion notificacion;
+    @XmlElement(name = "NumeracionDIAN")
+    private Numeracion numeracionDian;
 
-	@XmlElement(name = "Emisor")
-	private Emisor emisor;
+    @XmlElement(name = "Notificacion")
+    private Notificacion notificacion;
 
-	@XmlElement(name = "Cliente")
-	private Cliente cliente;
+    @XmlElement(name = "Emisor")
+    private Emisor emisor;
 
-	@XmlElement(name = "Totales")
-	private Total total;
+    @XmlElement(name = "Cliente")
+    private Cliente cliente;
 
-	@XmlElement(name = "Linea")
-	private Linea linea;
+    @XmlElement(name = "Totales")
+    private Total total;
 
-	@XmlElement(name = "Extensiones")
-	private Extension extension;
+    @XmlElement(name = "Linea")
+    private Linea linea;
 
-	public Cabecera getCabecera() {
-		return cabecera;
-	}
+    @XmlElement(name = "Extensiones")
+    private Extension extension;
 
-	public void setCabecera(Cabecera cabecera) {
-		this.cabecera = cabecera;
-	}
+    public Cabecera getCabecera() {
+        return cabecera;
+    }
 
-	public Numeracion getNumeracionDian() {
-		return numeracionDian;
-	}
+    public void setCabecera(Cabecera cabecera) {
+        this.cabecera = cabecera;
+    }
 
-	public void setNumeracionDian(Numeracion numeracionDian) {
-		this.numeracionDian = numeracionDian;
-	}
+    public Numeracion getNumeracionDian() {
+        return numeracionDian;
+    }
 
-	public Notificacion getNotificacion() {
-		return notificacion;
-	}
+    public void setNumeracionDian(Numeracion numeracionDian) {
+        this.numeracionDian = numeracionDian;
+    }
 
-	public void setNotificacion(Notificacion notificacion) {
-		this.notificacion = notificacion;
-	}
+    public Notificacion getNotificacion() {
+        return notificacion;
+    }
 
-	public Emisor getEmisor() {
-		return emisor;
-	}
+    public void setNotificacion(Notificacion notificacion) {
+        this.notificacion = notificacion;
+    }
 
-	public void setEmisor(Emisor emisor) {
-		this.emisor = emisor;
-	}
+    public Emisor getEmisor() {
+        return emisor;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public void setEmisor(Emisor emisor) {
+        this.emisor = emisor;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	public Total getTotal() {
-		return total;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public void setTotal(Total total) {
-		this.total = total;
-	}
+    public Total getTotal() {
+        return total;
+    }
 
-	public Linea getLinea() {
-		return linea;
-	}
+    public void setTotal(Total total) {
+        this.total = total;
+    }
 
-	public void setLinea(Linea linea) {
-		this.linea = linea;
-	}
+    public Linea getLinea() {
+        return linea;
+    }
 
-	public Extension getExtension() {
-		return extension;
-	}
+    public void setLinea(Linea linea) {
+        this.linea = linea;
+    }
 
-	public void setExtension(Extension extension) {
-		this.extension = extension;
-	}
+    public Extension getExtension() {
+        return extension;
+    }
 
+    public void setExtension(Extension extension) {
+        this.extension = extension;
+    }
+
+    public MedioPago getMedioDePago() {
+        return medioDePago;
+    }
+
+    public void setMedioDePago(MedioPago medioDePago) {
+        this.medioDePago = medioDePago;
+    }
 }

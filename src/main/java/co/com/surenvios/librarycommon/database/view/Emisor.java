@@ -52,6 +52,9 @@ public class Emisor {
     @Column(name = "Obligacion")
     private String obligacion;
 
+    @Column(name = "Origen")
+    private String origen;
+
     public String getTipoPersona() {
         return tipoPersona;
     }
@@ -170,5 +173,13 @@ public class Emisor {
 
     public void setObligacion(String obligacion) {
         this.obligacion = obligacion;
+    }
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
     }
 }

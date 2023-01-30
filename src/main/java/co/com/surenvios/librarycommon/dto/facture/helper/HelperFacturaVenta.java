@@ -17,6 +17,7 @@ public class HelperFacturaVenta {
 			co.com.surenvios.librarycommon.database.view.Emisor emisor, Acumulado acumulado) {
 		FacturaVentaRequest retorno = new FacturaVentaRequest();
 		retorno.setCabecera(createCabecera(emisor, acumulado));
+		retorno.setMedioDePago(createMedioPago(acumulado));
 		retorno.setNumeracionDian(createNumeracion(resolucion));
 		retorno.setNotificacion(createNotificacion(emisor, acumulado));
 		retorno.setEmisor(createEmisor(emisor));
@@ -38,9 +39,18 @@ public class HelperFacturaVenta {
 		retorno.setMonedaFactura(emisor.getMoneda());
 		retorno.setObservaciones(acumulado.getObservacion());
 		retorno.setTipoFactura("01");
-		retorno.setFormaDePago("1");
+		retorno.setFormaDePago(String.valueOf(acumulado.getFormadePago()));
 		retorno.setLineasDeFactura("1");
 		retorno.setTipoOperacion("10");
+		return retorno;
+	}
+
+	public static MedioPago createMedioPago (Acumulado acumulado){
+		MedioPago retorno = new MedioPago();
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		retorno.setCodigoMedioPago("ZZZ");
+		retorno.setFormaDePago(String.valueOf(acumulado.getFormadePago()));
+		retorno.setFechaVencimiento(format.format(acumulado.getFechaVencimiento().getTime()));
 		return retorno;
 	}
 

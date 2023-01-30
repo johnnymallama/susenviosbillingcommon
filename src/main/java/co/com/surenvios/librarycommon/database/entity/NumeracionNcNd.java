@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Table(name = "FE_NUMERACION_NC_ND")
 @NamedStoredProcedureQuery(name = "NumeracionNcNd.ProximaConsecutivoNumeracion", procedureName = "ProximaConsecutivoNumeracion", parameters = {
 		@StoredProcedureParameter(mode = ParameterMode.IN, name = "pi_Tipo_Documento", type = String.class),
+		@StoredProcedureParameter(mode = ParameterMode.IN, name = "pi_Origen", type = String.class),
 		@StoredProcedureParameter(mode = ParameterMode.OUT, name = "po_Consecutivo_Proximo", type = Integer.class) })
 public class NumeracionNcNd {
 
@@ -30,6 +31,9 @@ public class NumeracionNcNd {
 
 	@Column(name = "estado")
 	private Integer estado;
+
+	@Column(name = "Origen")
+	private String origen;
 
 	public String getTipoDocumento() {
 		return tipoDocumento;
@@ -79,4 +83,11 @@ public class NumeracionNcNd {
 		this.estado = estado;
 	}
 
+	public String getOrigen() {
+		return origen;
+	}
+
+	public void setOrigen(String origen) {
+		this.origen = origen;
+	}
 }

@@ -1,11 +1,21 @@
 package co.com.surenvios.librarycommon.dto.facture.helper;
 
-import java.text.SimpleDateFormat;
-
 import co.com.surenvios.librarycommon.database.entity.*;
 import co.com.surenvios.librarycommon.dto.facture.request.common.*;
 import co.com.surenvios.librarycommon.dto.facture.request.facturaventa.*;
 import co.com.surenvios.librarycommon.util.UtilText;
+
+import static co.com.surenvios.librarycommon.util.Constants.VALUE_ZERO_TWO_DECIMAL;
+import static co.com.surenvios.librarycommon.util.Constants.VALUE_ZERO_ONE_DECIMAL;
+import static co.com.surenvios.librarycommon.util.Constants.TYPE_OPERATION_BILLING;
+import static co.com.surenvios.librarycommon.util.Constants.VALUE_ONE;
+import static co.com.surenvios.librarycommon.util.Constants.EMPTY;
+import static co.com.surenvios.librarycommon.util.Constants.CODE_MEDIO_PAGO;
+import static co.com.surenvios.librarycommon.util.Constants.CODE_MAIL;
+import static co.com.surenvios.librarycommon.util.Constants.VALUE_ONE_TWO_DECIMAL;
+import static co.com.surenvios.librarycommon.util.Constants.VALUE_ZERO;
+import static co.com.surenvios.librarycommon.util.Constants.TYPE_BILLING;
+import static co.com.surenvios.librarycommon.util.UtilText.formatDate;
 
 public class HelperFacturaVenta {
 
@@ -32,34 +42,31 @@ public class HelperFacturaVenta {
 	public static Cabecera createCabecera(co.com.surenvios.librarycommon.database.view.Emisor emisor,
 			Acumulado acumulado) {
 		Cabecera retorno = new Cabecera();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		retorno.setFechaEmision(format.format(acumulado.getFechaEmision().getTime()));
-		retorno.setFechaVencimiento(format.format(acumulado.getFechaVencimiento().getTime()));
+		retorno.setFechaEmision(formatDate(acumulado.getFechaEmision()));
+		retorno.setFechaVencimiento(formatDate(acumulado.getFechaVencimiento()));
 		retorno.setHoraEmision(acumulado.getHoraEmision());
 		retorno.setMonedaFactura(emisor.getMoneda());
 		retorno.setObservaciones(acumulado.getObservacion());
-		retorno.setTipoFactura("01");
+		retorno.setTipoFactura(TYPE_BILLING);
 		retorno.setFormaDePago(String.valueOf(acumulado.getFormadePago()));
-		retorno.setLineasDeFactura("1");
-		retorno.setTipoOperacion("10");
+		retorno.setLineasDeFactura(VALUE_ONE);
+		retorno.setTipoOperacion(TYPE_OPERATION_BILLING);
 		return retorno;
 	}
 
 	public static MedioPago createMedioPago (Acumulado acumulado){
 		MedioPago retorno = new MedioPago();
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		retorno.setCodigoMedioPago("ZZZ");
+		retorno.setCodigoMedioPago(CODE_MEDIO_PAGO);
 		retorno.setFormaDePago(String.valueOf(acumulado.getFormadePago()));
-		retorno.setFechaVencimiento(format.format(acumulado.getFechaVencimiento().getTime()));
+		retorno.setFechaVencimiento(formatDate(acumulado.getFechaVencimiento()));
 		return retorno;
 	}
 
 	public static Numeracion createNumeracion(Resolucion resolucion) {
-		SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
 		Numeracion retorno = new Numeracion();
 		retorno.setNumeroResolucion(resolucion.getNumeroResolucion());
-		retorno.setFechaInicio(formatDate.format(resolucion.getFechaInicio().getTime()));
-		retorno.setFechaFin(formatDate.format(resolucion.getFechaFin().getTime()));
+		retorno.setFechaInicio(formatDate(resolucion.getFechaInicio()));
+		retorno.setFechaFin(formatDate(resolucion.getFechaFin()));
 		retorno.setPrefijoNumeracion(resolucion.getPrefijo());
 		retorno.setConsecutivoInicial(String.valueOf(resolucion.getConsecutivoInicial()));
 		retorno.setConsecutivoFinal(String.valueOf(resolucion.getConsecutivoFinal()));
@@ -69,7 +76,7 @@ public class HelperFacturaVenta {
 	public static Notificacion createNotificacion(co.com.surenvios.librarycommon.database.view.Emisor emisor,
 			Acumulado acumulado) {
 		Notificacion retorno = new Notificacion();
-		retorno.setTipo("Mail");
+		retorno.setTipo(CODE_MAIL);
 		retorno.setDe(emisor.getCorreoRemitente());
 		retorno.setPara(acumulado.getCorreoCliente());
 		return retorno;
@@ -98,7 +105,7 @@ public class HelperFacturaVenta {
 		retorno.setNombreDepartamento(emisor.getNombreDepartamento());
 		retorno.setCodigoDepartamento(emisor.getCodigoDepartamento());
 		retorno.setDireccion(emisor.getDireccion());
-		retorno.setCodigoPostal("");
+		retorno.setCodigoPostal(EMPTY);
 		return retorno;
 	}
 
@@ -108,7 +115,7 @@ public class HelperFacturaVenta {
 		retorno.setTipoRegimen(acumulado.getTipoRegimenCli());
 		retorno.setTipoIdentificacion(acumulado.getTipoIdentificacionCliente());
 		retorno.setNumeroIdentificacion(acumulado.getNumeroIdentificacionCliente());
-		retorno.setDigitoVerificacion(acumulado.getDigitoVerifiCliente() == null ? "" : acumulado.getDigitoVerifiCliente());
+		retorno.setDigitoVerificacion(acumulado.getDigitoVerifiCliente() == null ? EMPTY : acumulado.getDigitoVerifiCliente());
 		String nombreComercialRazonSocial = acumulado.getRazonSocialCliente() == null ? acumulado.getNombreComercial()
 				: acumulado.getRazonSocialCliente();
 		retorno.setRazonSocial(nombreComercialRazonSocial);
@@ -138,7 +145,7 @@ public class HelperFacturaVenta {
 		retorno.setNombrePais(acumulado.getNombrePaisCliente());
 		retorno.setCodigoPais(acumulado.getCodigoPaisCliente());
 		retorno.setIdiomaPais(acumulado.getIdiomaPaisCliente());
-		retorno.setCodigoPostal("");
+		retorno.setCodigoPostal(EMPTY);
 		return retorno;
 	}
 
@@ -152,17 +159,17 @@ public class HelperFacturaVenta {
 	public static Total createTotal(Acumulado acumulado) {
 		Total retorno = new Total();
 		retorno.setBruto(String.valueOf(acumulado.getSubtotal()));
-		retorno.setBaseImponible("0.00");
+		retorno.setBaseImponible(VALUE_ZERO_TWO_DECIMAL);
 		retorno.setBrutoMasImpuesto(String.valueOf(acumulado.getTotal()));
-		retorno.setImpuesto("0.00");
-		retorno.setDescuento("0.0");
-		retorno.setRetencion("0.0");
-		retorno.setCargo("0.0");
+		retorno.setImpuesto(VALUE_ZERO_TWO_DECIMAL);
+		retorno.setDescuento(VALUE_ZERO_ONE_DECIMAL);
+		retorno.setRetencion(VALUE_ZERO_ONE_DECIMAL);
+		retorno.setCargo(VALUE_ZERO_ONE_DECIMAL);
 		retorno.setGeneral(String.valueOf(acumulado.getTotal()));
-		retorno.setAnticipo("0.0");
-		retorno.setRedondeo("0.0");
-		retorno.setTotalDescuentoLinea("0.0");
-		retorno.setTotalCargoLinea("0.0");
+		retorno.setAnticipo(VALUE_ZERO_ONE_DECIMAL);
+		retorno.setRedondeo(VALUE_ZERO_ONE_DECIMAL);
+		retorno.setTotalDescuentoLinea(VALUE_ZERO_ONE_DECIMAL);
+		retorno.setTotalCargoLinea(VALUE_ZERO_ONE_DECIMAL);
 		return retorno;
 	}
 
@@ -175,13 +182,13 @@ public class HelperFacturaVenta {
 
 	public static Detalle createLineaDetalle(Acumulado acumulado) {
 		Detalle retorno = new Detalle();
-		retorno.setNumeroLinea("1");
-		retorno.setCantidad("1");
+		retorno.setNumeroLinea(VALUE_ONE);
+		retorno.setCantidad(VALUE_ONE);
 		retorno.setUnidadMedida(acumulado.getUnidadMedida());
 		retorno.setSubTotalLinea(String.valueOf(acumulado.getSubtotal()));
 		retorno.setDescripcion(acumulado.getDescripcion());
-		retorno.setCantidadBase("1.00");
-		retorno.setUnidadCantidadBase("0");
+		retorno.setCantidadBase(VALUE_ONE_TWO_DECIMAL);
+		retorno.setUnidadCantidadBase(VALUE_ZERO);
 		retorno.setPrecioUnitario(String.valueOf(acumulado.getSubtotal()));
 		retorno.setValorTotalItem(String.valueOf(acumulado.getTotal()));
 		return retorno;

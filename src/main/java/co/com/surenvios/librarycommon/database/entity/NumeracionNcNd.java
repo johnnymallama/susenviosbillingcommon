@@ -13,6 +13,9 @@ import javax.persistence.*;
 public class NumeracionNcNd {
 
 	@Id
+	@Column(name = "Identificador")
+	private String id;
+
 	@Column(name = "TipoDocumento")
 	private String tipoDocumento;
 
@@ -89,5 +92,13 @@ public class NumeracionNcNd {
 
 	public void setOrigen(String origen) {
 		this.origen = origen;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 }

@@ -143,6 +143,9 @@ public class Acumulado {
     @Column(name = "Origen")
     private String origen;
 
+    @Column(name = "FacturaId")
+    private Integer idFacturaVenta;
+
     public String getNumeroGuia() {
         return numeroGuia;
     }
@@ -485,5 +488,13 @@ public class Acumulado {
 
     public void setOrigen(String origen) {
         this.origen = origen;
+    }
+
+    public Integer getIdFacturaVenta() {
+        return idFacturaVenta;
+    }
+
+    public void setIdFacturaVenta(Integer idFacturaVenta) {
+        this.idFacturaVenta = idFacturaVenta;
     }
 }

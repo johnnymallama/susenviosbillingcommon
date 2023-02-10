@@ -4,73 +4,106 @@ import javax.xml.bind.annotation.*;
 
 import co.com.surenvios.librarycommon.dto.facture.request.common.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @XmlRootElement(name = "NotaDebito")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class NotaDebitoRequest {
 
-	@XmlElement(name = "Cabecera")
-	private Cabecera cabecera;
+    @XmlElement(name = "Cabecera")
+    private Cabecera cabecera;
 
-	@XmlElement(name = "Emisor")
-	private Emisor emisor;
+    @XmlElement(name = "MediosDePago")
+    private MedioPago medioDePago;
 
-	@XmlElement(name = "Cliente")
-	private Cliente cliente;
+    @XmlElementWrapper(name = "FacturasRelacionadas")
+    @XmlElement(name = "FacturaRelacionada")
+    private List<FacturaRelacion> facturaRelacion;
 
-	@XmlElement(name = "Totales")
-	private Total total;
+    @XmlElement(name = "Emisor")
+    private Emisor emisor;
 
-	@XmlElement(name = "Linea")
-	private Linea linea;
+    @XmlElement(name = "Cliente")
+    private Cliente cliente;
 
-	@XmlElement(name = "Notificacion")
-	private Notificacion notificacion;
+    @XmlElement(name = "Totales")
+    private Total total;
 
-	public Cabecera getCabecera() {
-		return cabecera;
-	}
+    @XmlElement(name = "Linea")
+    private Linea linea;
 
-	public void setCabecera(Cabecera cabecera) {
-		this.cabecera = cabecera;
-	}
+    @XmlElement(name = "Notificacion")
+    private Notificacion notificacion;
 
-	public Emisor getEmisor() {
-		return emisor;
-	}
+    public Cabecera getCabecera() {
+        return cabecera;
+    }
 
-	public void setEmisor(Emisor emisor) {
-		this.emisor = emisor;
-	}
+    public void setCabecera(Cabecera cabecera) {
+        this.cabecera = cabecera;
+    }
 
-	public Cliente getCliente() {
-		return cliente;
-	}
+    public Emisor getEmisor() {
+        return emisor;
+    }
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+    public void setEmisor(Emisor emisor) {
+        this.emisor = emisor;
+    }
 
-	public Total getTotal() {
-		return total;
-	}
+    public Cliente getCliente() {
+        return cliente;
+    }
 
-	public void setTotal(Total total) {
-		this.total = total;
-	}
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
-	public Linea getLinea() {
-		return linea;
-	}
+    public Total getTotal() {
+        return total;
+    }
 
-	public void setLinea(Linea linea) {
-		this.linea = linea;
-	}
+    public void setTotal(Total total) {
+        this.total = total;
+    }
 
-	public Notificacion getNotificacion() {
-		return notificacion;
-	}
+    public Linea getLinea() {
+        return linea;
+    }
 
-	public void setNotificacion(Notificacion notificacion) {
-		this.notificacion = notificacion;
-	}
+    public void setLinea(Linea linea) {
+        this.linea = linea;
+    }
+
+    public Notificacion getNotificacion() {
+        return notificacion;
+    }
+
+    public void setNotificacion(Notificacion notificacion) {
+        this.notificacion = notificacion;
+    }
+
+    public MedioPago getMedioDePago() {
+        return medioDePago;
+    }
+
+    public void setMedioDePago(MedioPago medioDePago) {
+        this.medioDePago = medioDePago;
+    }
+
+    public List<FacturaRelacion> getFacturaRelacion() {
+        return facturaRelacion;
+    }
+
+    public void setFacturaRelacion(List<FacturaRelacion> facturaRelacion) {
+        this.facturaRelacion = facturaRelacion;
+    }
+
+    public void addFacturaRelacion(FacturaRelacion facturaRelacion) {
+        if (this.facturaRelacion == null) {
+            this.facturaRelacion = new ArrayList<>();
+        }
+        this.facturaRelacion.add(facturaRelacion);
+    }
 }
